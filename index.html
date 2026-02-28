@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>这么强生成器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>这么强生成器</h1>
+
+        <div class="upload-area" id="uploadArea">
+            <i>📁</i>
+            <p>拖拽图片到这里，或点击上传</p>
+            <input type="file" id="fileInput" accept="image/*">
+        </div>
+
+        <div class="editor-section" id="editorSection">
+            <div class="canvas-container">
+                <div class="canvas-wrapper" id="sourceWrapper">
+                    <h3>原图</h3>
+                    <div class="canvas-area">
+                        <canvas id="sourceCanvas"></canvas>
+                        <div class="split-line" id="splitLine"></div>
+                    </div>
+                </div>
+                <div class="canvas-wrapper">
+                    <h3>生成结果</h3>
+                    <div class="canvas-area">
+                        <canvas id="resultCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label>镜像操作</label>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" id="mirrorBtn">水平镜像</button>
+                        <button class="btn-secondary" id="verticalMirrorBtn">垂直镜像</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <label>添加文字</label>
+                        <span class="desktop-hint" style="font-size: 12px; color: #888;">拖动文字调整位置，滚轮缩放，双击删除</span>
+                        <span class="mobile-hint" style="font-size: 12px; color: #888; display: none;">拖动调整位置，双指缩放，双击删除</span>
+                    </div>
+                    <div class="text-controls">
+                        <input type="text" id="textInput" placeholder="输入文字...">
+                        <input type="number" id="fontSizeInput" value="40" min="10" max="200" style="width: 80px;">
+                        <input type="color" id="textColorInput" value="#ffffff">
+                        <button class="btn-primary" id="addTextBtn" disabled>添加</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>裁切模式</label>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn-primary" id="startCropBtn">开始裁切</button>
+                        <button class="btn-secondary" id="resetCropBtn">重置裁切</button>
+                    </div>
+                    <div id="cropHint" style="margin-top: 8px; font-size: 12px; color: #888; display: none;">
+                        <span class="desktop-hint">拖拽鼠标框选要保留的区域</span>
+                        <span class="mobile-hint" style="display: none;">拖拽手指框选要保留的区域</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>操作</label>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="btn-primary" id="resetBtn">重置</button>
+                        <button class="btn-secondary" id="clearTextBtn">清除文字</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; margin-top: 30px; margin-bottom: 20px;">
+                <button class="btn-success" id="downloadBtn" style="padding: 15px 40px; font-size: 16px;">下载图片</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
